@@ -7,13 +7,9 @@ from fastapi.responses import JSONResponse
 from typing import List, Dict, Any
 import requests
 import base64
-
-# Document processing libraries
 import docx2txt
 import PyPDF2
 import io
-
-# LangChain imports
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
@@ -22,10 +18,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import SequentialChain, LLMChain
 from langchain.prompts import PromptTemplate
 
-# Initialize FastAPI app
 app = FastAPI()
-
-# Setup CORS to allow requests from the React frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # In production, replace with specific origins
@@ -34,11 +27,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Set up Google Gemini API
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "AIzaSyDiUB-uN6FXNjHVTRYuZDVzS1ID4bAokUg")
 MODEL_NAME = "gemini-2.0-flash"
 
-# Initialize LLM
 llm = ChatGoogleGenerativeAI(
     model=MODEL_NAME,
     google_api_key=GOOGLE_API_KEY,
@@ -72,7 +63,6 @@ class ResumeParsingOutputParser(JsonOutputParser):
 
 parser = ResumeParsingOutputParser()
 
-# Resume Parsing LLM Chain
 resume_system_prompt = """
 You are an expert resume analyzer specialized in extracting structured information from resumes. 
 Analyze the provided resume text and extract the following information in JSON format:
@@ -115,9 +105,7 @@ Return ONLY the JSON response with no additional explanation. Follow this exact 
         {{
             "position": "string",
             "company": "string",
-            "duration": "string",
-            "responsibilities": ["string", "string", ...],
-            "achievements": ["string", "string", ...]
+            "duration": "string"
         }},
         ...
     ],
@@ -142,7 +130,6 @@ resume_chain = (
     | parser
 )
 
-# Job Recommendation LLM Chain
 job_recommendation_prompt = PromptTemplate(
     input_variables=["resume_data"],
     template="""

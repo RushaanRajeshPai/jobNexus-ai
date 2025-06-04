@@ -71,17 +71,17 @@ function App() {
   );
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       {/* Header */}
       <header className="bg-white shadow">
-        <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-gradient-to-l from-blue-400 to-blue-700">
+        <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-gradient-to-l from-orange-700 to-blue-700">
           <h1 className="text-4xl font-bold font-sans text-orange-600">JobNexus AI</h1>
           <h2 className="text-lg mx-5 font-sans text-orange-100">Find. Match. Succeed.</h2>
         </div>
       </header>
 
       {/* Main content */}
-      <main className="flex-grow mx-auto py-6 mt-15 w-full sm:px-6 lg:px-8">
+      <main className="flex-grow mx-auto py-6 w-full sm:px-6 lg:px-8">
         {/* Upload */}
         <div className="bg-white shadow rounded-lg mb-6" data-aos="fade-up">
           <div className="px-4 py-5 sm:p-6">
@@ -165,7 +165,7 @@ function App() {
                           <div className="ml-auto bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">{job.match_score}%</div>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2.5 mt-1">
-                          <div className="bg-orange-600 h-2.5 rounded-full" style={{ width: `${job.match_score}%` }}></div>
+                          <div className="bg-gradient-to-l from-orange-400 to-blue-700 h-2.5 rounded-full" style={{ width: `${job.match_score}%` }}></div>
                         </div>
                       </div>
                       <div className="mt-4">
@@ -223,7 +223,7 @@ function App() {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200">
-        <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-gradient-to-l from-blue-400 to-blue-700">
+        <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-gradient-to-l from-orange-700 to-blue-700">
           <p className="text-center text-sm text-white">
             © 2025 JobNexus AI. <br /> Maintained by Rushaan Pai.
           </p>

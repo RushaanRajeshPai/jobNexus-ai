@@ -133,7 +133,7 @@ resume_chain = (
 job_recommendation_prompt = PromptTemplate(
     input_variables=["resume_data"],
     template="""
-You are a career advisor and job matching expert. Based on the following parsed resume information, recommend the top 10 job positions that would be the best match for this candidate.
+You are a career advisor and job matching expert. Based on the following parsed resume information, recommend the top 10 job opening positions you can fetch from LinkedIn that would be the best match for this candidate.
 
 Resume data:
 {resume_data}
